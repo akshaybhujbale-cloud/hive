@@ -72,7 +72,7 @@
     <apache-directory-server.version>2.0.0-M24</apache-directory-server.version>
     <checkstyle.version>11.1.0</checkstyle.version>
     <commons-collections4.version>4.4</commons-collections4.version>
-    <commons-lang3.version>3.17.0</commons-lang3.version>
+    <commons-lang3.version>3.18.0</commons-lang3.version>
     <commons-dbcp2.version>2.14.0</commons-dbcp2.version>
     <datasketches.version>2.0.0</datasketches.version>
     <datanucleus-api-jdo.version>6.0.5</datanucleus-api-jdo.version>
@@ -100,7 +100,7 @@
     <junit.vintage.version>5.13.3</junit.vintage.version>
     <junit.platform.version>1.13.3</junit.platform.version>
     <libfb303.version>0.9.3</libfb303.version>
-    <libthrift.version>0.16.0</libthrift.version>
+    <libthrift.version>0.23.0</libthrift.version>
     <log4j2.version>2.25.4</log4j2.version>
     <mockito-core.version>5.17.0</mockito-core.version>
     <orc.version>2.1.2</orc.version>
