@@ -19,6 +19,7 @@
 package org.apache.hadoop.hive.accumulo;
 
 import java.util.LinkedHashMap;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.apache.hadoop.hive.accumulo.AccumuloHiveRow.ColumnTuple;
@@ -34,8 +35,6 @@ import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.PrimitiveObjectInspector;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
-
-import com.google.common.base.Charsets;
 
 /**
  * A Hive Map created from some collection of Key-Values from one to many column families with one
@@ -85,7 +84,7 @@ public class LazyAccumuloMap extends LazyMap {
               ColumnEncoding.BINARY == columnMapping.getKeyEncoding());
 
       ByteArrayRef keyRef = new ByteArrayRef();
-      keyRef.setData(cq.getBytes(Charsets.UTF_8));
+      keyRef.setData(cq.getBytes(StandardCharsets.UTF_8));
       key.init(keyRef, 0, keyRef.getData().length);
 
       // Value can be anything, use the obj inspector and respect binary

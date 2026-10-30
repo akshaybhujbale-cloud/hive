@@ -54,8 +54,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.google.common.base.Joiner;
-
 /**
  *
  */
@@ -107,8 +105,8 @@ public class TestAccumuloRowSerializer {
     tableProperties.setProperty(AccumuloSerDeParameters.COLUMN_MAPPINGS,
         ":rowid,cf:cq1#b,cf:cq2#b,cf:cq3");
     tableProperties.setProperty(serdeConstants.FIELD_DELIM, " ");
-    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, Joiner.on(',').join(columns));
-    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, Joiner.on(',').join(typeNames));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, String.join(",", columns));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, String.join(",", typeNames));
     AccumuloSerDeParameters accumuloSerDeParams = new AccumuloSerDeParameters(new Configuration(),
         tableProperties, AccumuloSerDe.class.getSimpleName());
     LazySerDeParameters serDeParams = accumuloSerDeParams.getSerDeParameters();
@@ -176,8 +174,8 @@ public class TestAccumuloRowSerializer {
     tableProperties.setProperty(AccumuloSerDeParameters.COLUMN_MAPPINGS,
         ":rowid,cf:cq1#b,cf:cq2#b,cf:cq3");
     tableProperties.setProperty(serdeConstants.FIELD_DELIM, " ");
-    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, Joiner.on(',').join(columns));
-    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, Joiner.on(',').join(typeNames));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, String.join(",", columns));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, String.join(",", typeNames));
     AccumuloSerDeParameters accumuloSerDeParams = new AccumuloSerDeParameters(new Configuration(),
         tableProperties, AccumuloSerDe.class.getSimpleName());
     LazySerDeParameters serDeParams = accumuloSerDeParams.getSerDeParameters();
@@ -249,8 +247,8 @@ public class TestAccumuloRowSerializer {
     tableProperties.setProperty(serdeConstants.FIELD_DELIM, " ");
     tableProperties.setProperty(serdeConstants.COLLECTION_DELIM, ",");
     tableProperties.setProperty(serdeConstants.MAPKEY_DELIM, ":");
-    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, Joiner.on(',').join(columns));
-    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, Joiner.on(',').join(typeNames));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, String.join(",", columns));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, String.join(",", typeNames));
     AccumuloSerDeParameters accumuloSerDeParams = new AccumuloSerDeParameters(new Configuration(),
         tableProperties, AccumuloSerDe.class.getSimpleName());
     LazySerDeParameters serDeParams = accumuloSerDeParams.getSerDeParameters();

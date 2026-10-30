@@ -18,13 +18,13 @@
  */
 package org.apache.hadoop.hive.accumulo.columns;
 
+import java.util.AbstractMap;
 import java.util.Map.Entry;
 
 import org.apache.hadoop.hive.accumulo.AccumuloHiveConstants;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.common.collect.Maps;
 
 /**
  *
@@ -119,10 +119,10 @@ public class TestColumnEncoding {
 
   @Test
   public void testMapEncodingParsing() {
-    Entry<ColumnEncoding,ColumnEncoding> stringString = Maps.immutableEntry(ColumnEncoding.STRING,
-        ColumnEncoding.STRING), stringBinary = Maps.immutableEntry(ColumnEncoding.STRING,
-        ColumnEncoding.BINARY), binaryBinary = Maps.immutableEntry(ColumnEncoding.BINARY,
-        ColumnEncoding.BINARY), binaryString = Maps.immutableEntry(ColumnEncoding.BINARY,
+    Entry<ColumnEncoding,ColumnEncoding> stringString = new AbstractMap.SimpleImmutableEntry<>(ColumnEncoding.STRING,
+        ColumnEncoding.STRING), stringBinary = new AbstractMap.SimpleImmutableEntry<>(ColumnEncoding.STRING,
+        ColumnEncoding.BINARY), binaryBinary = new AbstractMap.SimpleImmutableEntry<>(ColumnEncoding.BINARY,
+        ColumnEncoding.BINARY), binaryString = new AbstractMap.SimpleImmutableEntry<>(ColumnEncoding.BINARY,
         ColumnEncoding.STRING);
 
     Assert.assertEquals(stringString, ColumnEncoding.getMapEncoding("s:s"));

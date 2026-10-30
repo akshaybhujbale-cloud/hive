@@ -61,8 +61,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.base.Joiner;
-
 public class TestAccumuloSerDe {
 
   protected AccumuloSerDe serde;
@@ -384,8 +382,8 @@ public class TestAccumuloSerDe {
     Properties tableProperties = new Properties();
     tableProperties.setProperty(AccumuloSerDeParameters.COLUMN_MAPPINGS, ":rowid,cf:cq");
     // Use the default separators [0, 1, 2, 3, ..., 7]
-    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, Joiner.on(',').join(columns));
-    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, Joiner.on(',').join(types));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMNS, String.join(",", columns));
+    tableProperties.setProperty(serdeConstants.LIST_COLUMN_TYPES, String.join(",", typesAsStrings(types)));
     AccumuloSerDeParameters accumuloSerDeParams = new AccumuloSerDeParameters(new Configuration(),
         tableProperties, AccumuloSerDe.class.getSimpleName());
     LazySerDeParameters serDeParams = accumuloSerDeParams.getSerDeParameters();
@@ -479,5 +477,13 @@ public class TestAccumuloSerDe {
     }
 
     Assert.assertEquals(map2, actualStringMap);
+  }
+
+  private static List<String> typesAsStrings(List<TypeInfo> types) {
+    List<String> result = new ArrayList<>(types.size());
+    for (TypeInfo t : types) {
+      result.add(t.toString());
+    }
+    return result;
   }
 }

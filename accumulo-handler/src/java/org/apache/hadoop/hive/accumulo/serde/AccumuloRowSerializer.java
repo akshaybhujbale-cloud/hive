@@ -19,6 +19,7 @@
 package org.apache.hadoop.hive.accumulo.serde;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -47,7 +48,6 @@ import org.apache.hadoop.hive.serde2.typeinfo.TypeInfoUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;
 
 /**
@@ -170,8 +170,8 @@ public class AccumuloRowSerializer {
     ObjectInspector keyObjectInspector = mapObjectInspector.getMapKeyObjectInspector(), valueObjectInspector = mapObjectInspector
         .getMapValueObjectInspector();
 
-    byte[] cfBytes = columnMapping.getColumnFamily().getBytes(Charsets.UTF_8), cqPrefixBytes = columnMapping
-        .getColumnQualifierPrefix().getBytes(Charsets.UTF_8);
+    byte[] cfBytes = columnMapping.getColumnFamily().getBytes(StandardCharsets.UTF_8), cqPrefixBytes = columnMapping
+        .getColumnQualifierPrefix().getBytes(StandardCharsets.UTF_8);
     byte[] cqBytes, valueBytes;
     for (Entry<?,?> entry : map.entrySet()) {
       output.reset();

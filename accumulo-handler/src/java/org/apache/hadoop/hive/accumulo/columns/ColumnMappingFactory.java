@@ -18,6 +18,7 @@
  */
 package org.apache.hadoop.hive.accumulo.columns;
 
+import java.util.AbstractMap;
 import java.util.Map.Entry;
 
 import org.apache.hadoop.hive.accumulo.AccumuloHiveConstants;
@@ -26,7 +27,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Maps;
 
 /**
  *
@@ -178,6 +178,6 @@ public class ColumnMappingFactory {
           Character.toString(AccumuloHiveConstants.COLON));
     }
 
-    return Maps.immutableEntry(cf, cq);
+    return new AbstractMap.SimpleImmutableEntry<>(cf, cq);
   }
 }

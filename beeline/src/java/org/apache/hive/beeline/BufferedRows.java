@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 
 
 /**
@@ -42,7 +42,7 @@ class BufferedRows extends Rows {
   private int maxColumnWidth;
 
   BufferedRows(BeeLine beeLine, ResultSet rs) throws SQLException {
-    this(beeLine, rs, Optional.<Integer> absent());
+    this(beeLine, rs, Optional.<Integer> empty());
   }
 
   BufferedRows(BeeLine beeLine, ResultSet rs, Optional<Integer> limit) throws SQLException {
@@ -52,7 +52,7 @@ class BufferedRows extends Rows {
     list.add(new Row(columnCount));
 
     int numRowsBuffered = 0;
-    int maxRowsBuffered = limit.or(Integer.MAX_VALUE);
+    int maxRowsBuffered = limit.orElse(Integer.MAX_VALUE);
     
     while (numRowsBuffered++ < maxRowsBuffered && rs.next()) {
       this.list.add(new Row(columnCount, rs));

@@ -18,11 +18,11 @@
  */
 package org.apache.hadoop.hive.accumulo.columns;
 
+import java.nio.charset.StandardCharsets;
+
 import org.apache.hadoop.hive.accumulo.AccumuloHiveConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Charsets;
 
 /**
  * A Hive column which maps to a column family and column qualifier pair in Accumulo
@@ -54,7 +54,7 @@ public class HiveAccumuloColumnMapping extends ColumnMapping {
    */
   public byte[] getColumnFamilyBytes() {
     if (null == columnFamilyBytes) {
-      columnFamilyBytes = columnFamily.getBytes(Charsets.UTF_8);
+      columnFamilyBytes = columnFamily.getBytes(StandardCharsets.UTF_8);
     }
 
     return columnFamilyBytes;
@@ -72,7 +72,7 @@ public class HiveAccumuloColumnMapping extends ColumnMapping {
    */
   public byte[] getColumnQualifierBytes() {
     if (null == columnQualifierBytes) {
-      columnQualifierBytes = columnQualifier.getBytes(Charsets.UTF_8);
+      columnQualifierBytes = columnQualifier.getBytes(StandardCharsets.UTF_8);
     }
 
     return columnQualifierBytes;

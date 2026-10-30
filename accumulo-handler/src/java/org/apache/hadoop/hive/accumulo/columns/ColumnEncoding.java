@@ -18,13 +18,13 @@
  */
 package org.apache.hadoop.hive.accumulo.columns;
 
+import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import org.apache.hadoop.hive.accumulo.AccumuloHiveConstants;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Maps;
 
 /**
  * Encapsulate the encoding of values within the given column in Accumulo
@@ -176,6 +176,6 @@ public enum ColumnEncoding {
     String encoding1 = columnEncoding.substring(0, index), encoding2 = columnEncoding
         .substring(index + 1);
 
-    return Maps.immutableEntry(get(encoding1), get(encoding2));
+    return new AbstractMap.SimpleImmutableEntry<>(get(encoding1), get(encoding2));
   }
 }
